@@ -8,8 +8,8 @@ x + 1
 
 # Run the same statements in a script and run it. The run 
 # produces *no* output.
-# - `02-ex-2-1a-script.jl`
-# - `02-ex-2-1b-script.jl`
+# - `02-exercise-1a-script.jl`
+# - `02-exercise1b-script.jl`
 
 # Exercise 2-2
 
