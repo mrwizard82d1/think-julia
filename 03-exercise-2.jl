@@ -5,8 +5,7 @@ function rightjustify(text :: AbstractString)
     last_column = 70
     start_column = last_column - text_length
     fill = " " ^ start_column
-    print(fill)
-    println(text)
+    println(fill * text)
 end
 
 function testrightjustify()
