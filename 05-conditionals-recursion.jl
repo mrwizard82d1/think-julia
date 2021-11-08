@@ -185,3 +185,42 @@ end
 println("Hello", 5)
 println("Hello", 0)
 println("Hello", -1)
+
+# Infinite recursion
+
+function recurse()
+    recurse()
+end
+
+# Although `recurse` should never complete, Julia actually
+# raises an error when it detects too many recursive calls.
+
+# The following code works as expected when sent to the REPL for 
+# evaluation one line at a time; however, if one sends the 
+# entire file (within VSCode), VSCode appears to hang on the 
+# subsequent `readline` calls. (That is, the editor no longer 
+# recognizes input after attempting to read a line from the 
+# user.) By commenting it out, one avoids that problem when
+# sending the entire file.
+# recurse()
+
+# Keyboard input
+
+# The following code works as expected when sent to the REPL for 
+# evaluation one line at a time; however, if one sends the 
+# entire file (within VSCode), the REPL seems confused. One must
+# enter the text followed by *two* ENTER presses. Otherwise, the
+# REPL appears to hang.
+# text = readline()
+
+# Before requesting input, one should prompt the user describing
+# the expected input.
+
+# The following code works as expected when sent to the REPL for 
+# evaluation one line at a time; however, if one sends the 
+# entire file (within VSCode), the REPL seems confused. One must
+# enter the text followed by *two* ENTER presses. Otherwise, the
+# REPL appears to hang. Once the REPL recognizes the entered 
+# text, it seems to raise a syntax error about an unrecognized
+# token.
+print("What...is your name?"); readline()
