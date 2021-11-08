@@ -159,3 +159,29 @@ end
 if 0 < x 10
     println("x is a positive, single-digit number")
 end
+
+# Recursion
+
+function countdown(n)
+    if n ≤ 0
+        println("Blastoff!")
+    else
+        print(n, " ")
+        countdown(n - 1)
+    end
+end
+countdown(5)
+countdown(0)
+countdown(-1)
+
+function printn(s, n)
+    if n ≤ 0
+        return
+    end
+
+    println(s)
+    println(s, n - 1)
+end
+println("Hello", 5)
+println("Hello", 0)
+println("Hello", -1)
