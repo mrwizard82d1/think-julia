@@ -64,3 +64,45 @@ function draw_snowflake(x)
         snowflake(turtle, x)
     end
 end
+
+"""
+koch_antisnowflake(t, x)
+
+I think this draws a Koch 'antisnowflake' 
+(See https://en.wikipedia.org/wiki/Koch_snowflake)
+
+Args:
+    t: turtle used for drawing
+    x: length of curve
+"""
+function koch_antisnowflake(t, x)
+    if x == 0
+        return
+    end
+
+    if x < 3
+        forward(t, x)
+    end
+
+    koch(t, x ÷ 3)
+    turn(t, -90)
+
+    koch(t, x ÷ 3)
+    turn(t, 180)
+
+    koch(t, x ÷ 3)
+    turn(t, -90)
+
+    koch(t, x ÷ 3)
+end
+
+function draw_koch_antisnowflake(x)
+    turtle = Turtle()
+    @svg begin
+        koch_antisnowflake(turtle, x)
+        turn(turtle, 120)
+        koch_antisnowflake(turtle, x)
+        turn(turtle, 120)
+        koch_antisnowflake(turtle, x)
+    end
+end
