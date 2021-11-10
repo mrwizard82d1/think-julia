@@ -25,21 +25,21 @@ function test_triangle_candidate()
     print("a? ")
     a = parse(Float64, readline())
     if a < 0
-        println("Value, $(a), cannot be negative!")
+        println("Length, $(a), cannot be negative!")
         return
     end
 
     print("b? ")
     b = parse(Float64, readline())
     if b < 0
-        println("Value, $(b), cannot be negative!")
+        println("Length, $(b), cannot be negative!")
         return
     end
 
     print("c? ")
     c = parse(Float64, readline())
     if c < 0
-        println("Value, $(c), cannot be negative!")
+        println("Length, $(c), cannot be negative!")
         return
     end
 
