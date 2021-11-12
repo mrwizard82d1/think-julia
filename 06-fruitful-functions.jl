@@ -164,3 +164,74 @@ isdivisible(81, 3)
 isdivisible(83, 2)
 isdivisible(6, 4)
 isdivisible(6, 3)
+
+# More recursion
+
+function fact(n) end
+
+function fact(n) 
+    if n == 0
+        return 1
+    end
+end
+fact(0)
+
+function fact(n)
+    if n == 0
+        return 1
+    end
+
+    return n * fact(n - 1)
+end
+fact(0)
+fact(1)
+fact(5)
+
+# Note that Julia provides a `factorial` function to calculate 
+# the factorial of an integer value.
+
+# One more example
+function fib(n)
+    if n == 0
+        return 0
+    elseif n == 1
+        return 1
+    else
+        return fib(n - 1) + fib(n - 2)
+    end
+end
+fib(0)
+fib(1)
+fib(2)
+fib(3)
+fib(5)
+fib(10)
+
+# Checking types
+
+# Executing the following code in VS Code seems to:
+# 
+# - Raise a stack overflow error
+# - Prevent the editor from accepting input
+#
+# Because of the second consequence, I have commented out 
+# this code
+
+# fact(1.5)
+
+function fact(n)
+    if ! (n isa Int64)
+        error("Factorial only defined for integer values.")
+    elseif n < 0
+        error("Factorial is only defined for positive integer values.")
+    elseif n == 0
+        return 1
+    else
+        return n * fact(n - 1)
+    end
+end
+fact(1.5)
+fact(-2)
+fact(0)
+fact(1)
+fact(10)
