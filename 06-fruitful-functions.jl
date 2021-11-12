@@ -130,3 +130,37 @@ function distance(x₁, y₁, x₂, y₂)
 end
 distance(0, 0, 0, 0)
 distance(1, 2, 4, 6)
+
+# Composition
+function circlearea(xc, yc, xp, yp)
+    radius = distance(xc, yc, xp, yp)
+    result = area(radius)
+    return result
+end
+circlearea(0, 0, 1, 1)
+
+function circlearea(xc, yc, xp, yp)
+    area(distance(xc, yc, xp, yp))
+end
+circlearea(0, 0, 1, 1)
+
+# Boolean functions
+function isdivisible(x, y)
+    if x % y == 0
+        return true
+    else
+        return false
+    end
+end
+isdivisible(81, 3)
+isdivisible(83, 2)
+isdivisible(6, 4)
+isdivisible(6, 3)
+
+function isdivisible(x, y)
+    x % y == 0
+end
+isdivisible(81, 3)
+isdivisible(83, 2)
+isdivisible(6, 4)
+isdivisible(6, 3)
