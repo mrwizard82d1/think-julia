@@ -99,3 +99,8 @@ while true
     end
     x = y
 end
+
+expr = Meta.parse("1 + 2 * 3")
+eval(expr)
+expr = Meta.parse("sqrt(π)")
+eval(expr)
