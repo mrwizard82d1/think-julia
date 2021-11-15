@@ -87,3 +87,17 @@ end
 str = "Julius Caesar"
 str[1:6]
 str[8:end]
+
+# Strings are immutable
+
+greeting = "Hello, Julia world!"
+try
+    greeting[1] = 'j'
+catch ex
+    println(ex)
+end
+
+# To change a string, create a new string concatenating the new
+# and the old pieces together
+target_greeting = 'J' * greeting[2:end]
+greeting
