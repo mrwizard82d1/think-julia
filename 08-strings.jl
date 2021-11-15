@@ -81,3 +81,9 @@ suffix = "ack"
 for letter in prefixes
     println(letter * suffix)
 end
+
+# String slices
+
+str = "Julius Caesar"
+str[1:6]
+str[8:end]
