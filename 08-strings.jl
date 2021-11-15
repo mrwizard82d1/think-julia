@@ -69,3 +69,15 @@ while index <= sizeof(fruits)
     # local variable.
     global index = nextind(fruits, index)
 end
+
+# Another wy to write traversals is with a for loop.
+for letter in fruits
+    println(letter)
+end
+
+prefixes = "JKLMNOPQ"
+suffix = "ack"
+
+for letter in prefixes
+    println(letter * suffix)
+end
