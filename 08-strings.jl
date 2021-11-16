@@ -141,3 +141,226 @@ for letter in word
     end
 end
 counter
+
+# String library
+
+uppercase("Hello, Julia!")
+
+findfirst('a', "banana")
+findfirst("a", "banana")
+findfirst("na", "banana")
+
+findnext("na", "banana", 4)
+
+# The ∈ operator
+
+'a' ∈ "banana"
+
+function inboth(word1, word2)
+    for letter in word1
+        if letter ∈ word2
+            print(letter, " ")
+        end
+    end
+    println()
+end
+inboth("foo", "bar")
+inboth("bar", "baz")
+inboth("baz", "zork")
+inboth("apples", "oranges")
+
+# String comparison
+
+word = "Pineapple"
+if word == "banana"
+    println("All right, bananas.")
+end
+
+if word < "banana"
+    println("Your word, $(word), comes before \"banana\".")
+elseif word > "banana"
+    println("Your word, $(word), comes after \"banana\".")
+else
+    println("All right, bananas")
+end
+
+# Julia, like most languages sorts uppercase letters before the 
+# corresponding lowercase letter. A common "fix" is to 
+# canonicalize the case before comparing. For example, one could
+# convert all letters to lowercase before comparison.
+if lowercase(word) < "banana"
+    println("Your word, $(word), comes before \"banana\".")
+elseif lowercase(word) > "banana"
+    println("Your word, $(word), comes after \"banana\".")
+else
+    println("All right, bananas")
+end
+
+# Debugging
+
+# `isreverse` is intended to test if two words are the reverse of
+# each other; however, it contains two errors related to the 
+# start and ending indices of strings.
+
+function isreverse(word1, word2)
+    if length(word1) != length(word2)
+        return false
+    end
+
+    i = firstindex(word1)
+    j = lastindex(word2)
+    while j >= 0
+        j = prevind(word2, j)
+        if word1[i] != word2[j]
+            return false
+        end
+        i = nextind(word1, i)
+    end
+    true
+end
+isreverse("", "")
+isreverse("a", "a")
+isreverse("madam im adam", "madam im adam")
+isreverse("baz", "rac")
+
+# Add some debug statements
+
+function isreverse(word1, word2)
+    if length(word1) != length(word2)
+        return false
+    end
+
+    i = firstindex(word1)
+    j = lastindex(word2)
+    while j >= 0
+        @show i j
+        j = prevind(word2, j)
+        if word1[i] != word2[j]
+            return false
+        end
+        i = nextind(word1, i)
+    end
+    true
+end
+isreverse("", "")
+isreverse("a", "a")
+isreverse("madam im adam", "madam im adam")
+isreverse("baz", "rac")
+
+# Not `j >= 0` but `j >= 1` (or equivalently, `j > 0`)
+
+function isreverse(word1, word2)
+    if length(word1) != length(word2)
+        return false
+    end
+
+    i = firstindex(word1)
+    j = lastindex(word2)
+    while j >= 1
+        j = prevind(word2, j)
+        if word1[i] != word2[j]
+            return false
+        end
+        i = nextind(word1, i)
+    end
+    true
+end
+isreverse("", "")
+isreverse("a", "a")
+isreverse("madam im adam", "madam im adam")
+isreverse("baz", "rac")
+
+# Not quite. More debugging statements.
+
+function isreverse(word1, word2)
+    if length(word1) != length(word2)
+        return false
+    end
+
+    i = firstindex(word1)
+    j = lastindex(word2)
+    while j >= 1
+        j = prevind(word2, j)
+        @show i j
+        if word1[i] != word2[j]
+            return false
+        end
+        i = nextind(word1, i)
+    end
+    true
+end
+isreverse("", "")
+isreverse("a", "a")
+isreverse("madam im adam", "madam im adam")
+isreverse("baz", "rac")
+
+# Of course, "decrementing" the index too soon.
+
+function isreverse(word1, word2)
+    if length(word1) != length(word2)
+        return false
+    end
+
+    i = firstindex(word1)
+    j = lastindex(word2)
+    while j >= 1
+        if word1[i] != word2[j]
+            return false
+        end
+        i = nextind(word1, i)
+        j = prevind(word2, j)
+    end
+    true
+end
+isreverse("", "")
+isreverse("a", "a")
+isreverse("madam im adam", "madam im adam")
+isreverse("baz", "rac")
+
+# Hmmm. Very strange. More debugging.
+
+function isreverse(word1, word2)
+    if length(word1) != length(word2)
+        return false
+    end
+
+    i = firstindex(word1)
+    j = lastindex(word2)
+    while j >= 1
+        if word1[i] != word2[j]
+            @show i j
+            return false
+        end
+        i = nextind(word1, i)
+        j = prevind(word2, j)
+    end
+    true
+end
+isreverse("", "")
+isreverse("a", "a")
+isreverse("madam im adam", "madam im adam")
+isreverse("baz", "rac")
+
+# Hmmm. Confused by embedded spaces. Replace the test case.
+
+function isreverse(word1, word2)
+    if length(word1) != length(word2)
+        return false
+    end
+
+    i = firstindex(word1)
+    j = lastindex(word2)
+    while j >= 1
+        if word1[i] != word2[j]
+            return false
+        end
+        i = nextind(word1, i)
+        j = prevind(word2, j)
+    end
+    true
+end
+isreverse("", "")
+isreverse("a", "a")
+isreverse("redivider", "redivider")
+isreverse("baz", "rac")
+isreverse("12/22/21", "12/22/21")  # Something to look forward to (as on 16-Nov-2021)
