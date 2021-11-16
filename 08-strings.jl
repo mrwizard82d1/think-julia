@@ -50,6 +50,11 @@ try
 catch ex
     println(ex)
 end
+try
+    fruits[end - 2]
+catch ex
+    println(ex)
+end
 
 # The function, `nextind`, returns the next valid index in 
 # a String
@@ -125,3 +130,14 @@ end
 find("baz", 'b')
 find("baz", 'z')
 find("baz", 'q')
+
+# Looping and Counting
+
+word = "banana"
+counter = 0
+for letter in word
+    if letter == 'a'
+        global counter = counter + 1
+    end
+end
+counter
