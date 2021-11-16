@@ -101,3 +101,27 @@ end
 # and the old pieces together
 target_greeting = 'J' * greeting[2:end]
 greeting
+
+# String interpolation
+
+greet = "Hello"
+whom = "Julia"
+"$greet, $(whom)!"
+
+"1 + 2 = $(1 + 2)"
+
+# Searching
+
+function find(word, letter)
+    index = firstindex(word)
+    while index <= sizeof(word)
+        if word[index] == letter
+            return index
+        end
+        index = nextind(word, index)
+    end
+    -1
+end
+find("baz", 'b')
+find("baz", 'z')
+find("baz", 'q')
