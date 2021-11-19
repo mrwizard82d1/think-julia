@@ -122,3 +122,45 @@ isvalid.(collect(s))
 
 s2 = "\xf7\xbf\xbf\xbf"
 foreach(display, s2)
+
+# Concatenation
+
+greet = "Hello"
+whom = "Julia"
+string(greet, " ", whom, "\n")
+
+greet * " " * whom * "\n"
+
+# Note that one **can** concatenate **invalid** UTF-8 strings. 
+# The resulting string may contain different characters than
+# the input strings, and its number of characters may be 
+# **lower** than the sum of the characters of the concatenated
+# strings.
+
+a, b = "\xe2\x88", "\x80"
+c = a * b
+length(a)
+length(b)
+length(c)
+
+collect.([a, b, c])
+length.([a, b, c])
+
+# Interpolation
+
+"$(greet), $(whom).\n"
+"greet * ' ' * whom = $(greet * " " * whom)"
+"$(greet * " " * whom)"
+
+"1 + 2 = $(1 + 2)"
+
+v = [1, 2, 3]
+"v: $(v)"
+
+c = 'x'
+"Hi, $c"
+
+"Hi, $whom"
+print("I have \$100 in my account.\n")
+
+# Triple-quoted string literals
